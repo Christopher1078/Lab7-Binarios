@@ -75,12 +75,16 @@ private void agregarCancion(){
     JTextField artista = new JTextField();
     JTextField genero = new JTextField();
     JFileChooser musica = new JFileChooser();
+    JOptionPane.showMessageDialog(null, "Agregue el archivo .WAV o .MP3 de la cancion");
+    musica.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Archivos de audio (*.wav, *.mp3)", "wav", "mp3"));
     int resultadoMusica = musica.showOpenDialog(this);
     if(resultadoMusica != JFileChooser.APPROVE_OPTION){
         return;
     }
     File fileMusica = musica.getSelectedFile();
     JFileChooser imagenChooser = new JFileChooser();
+    JOptionPane.showMessageDialog(null, "Agregue el archivo .PNG o .JPG de una imagen asociada a la cancion");
+    imagenChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Archivos de imagen (*.png, *.jpg)", "png", "jpg"));
     int resultadoImagen = imagenChooser.showOpenDialog(this);
     if(resultadoImagen != JFileChooser.APPROVE_OPTION){
         return;
