@@ -46,7 +46,7 @@ public class GUI extends JFrame {
         add(new JScrollPane(lista), BorderLayout.CENTER);
         add(controles, BorderLayout.SOUTH);
         add(imagen, BorderLayout.EAST);
-        
+        eventos();
     }
     
     private void cargarCanciones(){
@@ -67,6 +67,7 @@ public class GUI extends JFrame {
         stop.addActionListener(e-> reproductor.stop());
         agregar.addActionListener(e-> agregarCancion());
         remover.addActionListener(e-> eliminarCancion());
+        lista.addListSelectionListener(e-> mostrarImagen());
     }
     
     private void agregarCancion(){
