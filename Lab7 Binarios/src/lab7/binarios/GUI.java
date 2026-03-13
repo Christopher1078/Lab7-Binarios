@@ -70,25 +70,38 @@ public class GUI extends JFrame {
         lista.addListSelectionListener(e-> mostrarImagen());
     }
     
-    private void agregarCancion(){
-        JTextField nombre =new JTextField();
-        JTextField artista=new JTextField();
-        JTextField genero=new JTextField();
-        JFileChooser musica =new JFileChooser();
-        musica.showOpenDialog(null);
-        File fileMusica=musica.getSelectedFile();
-        JFileChooser imagenChooser=new JFileChooser();
-        imagenChooser.showOpenDialog(null);
-        File fileImagen=imagenChooser.getSelectedFile();
-        Object[] datos={"Nombre: ", nombre, "Artista: ", artista, "Genero: ", genero};
-        int opcion=JOptionPane.showConfirmDialog(null, datos);
-        if(opcion == JOptionPane.OK_OPTION){
-            Cancion c=new Cancion(nombre.getText(), artista.getText(), genero.getText(), fileMusica.getAbsolutePath(), fileImagen.getAbsolutePath(), 0);
-            canciones.add(c);
-            modelo.addElement(c);
-            archivo.agregar(c);
-        }
+private void agregarCancion(){
+    JTextField nombre = new JTextField();
+    JTextField artista = new JTextField();
+    JTextField genero = new JTextField();
+    JFileChooser musica = new JFileChooser();
+    int resultadoMusica = musica.showOpenDialog(this);
+    if(resultadoMusica != JFileChooser.APPROVE_OPTION){
+        return;
     }
+    File fileMusica = musica.getSelectedFile();
+    JFileChooser imagenChooser = new JFileChooser();
+    int resultadoImagen = imagenChooser.showOpenDialog(this);
+    if(resultadoImagen != JFileChooser.APPROVE_OPTION){
+        return;
+    }
+    File fileImagen = imagenChooser.getSelectedFile();
+    Object[] datos = {"Nombre:", nombre,"Artista:", artista,"Genero:", genero};
+    int opcion = JOptionPane.showConfirmDialog(this,datos,"Datos de la Canción",JOptionPane.OK_CANCEL_OPTION);
+    if(opcion != JOptionPane.OK_OPTION){
+        return;
+    }
+    if(nombre.getText().trim().isEmpty() ||
+       artista.getText().trim().isEmpty() ||
+       genero.getText().trim().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Debe llenar todos los campos","Error",JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    Cancion c = new Cancion(nombre.getText(),artista.getText(),genero.getText(),fileMusica.getAbsolutePath(),fileImagen.getAbsolutePath(),0);
+    canciones.add(c);
+    modelo.addElement(c);
+    archivo.agregar(c);
+}
     
     private void eliminarCancion(){
         int indice=lista.getSelectedIndex();
