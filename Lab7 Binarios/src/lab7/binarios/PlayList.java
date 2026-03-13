@@ -15,7 +15,7 @@ public class PlayList {
         try{
             archivo=new RandomAccessFile("playlista.dat","rw");
         }catch(IOException e){
-           JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+           JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
     
@@ -29,7 +29,7 @@ public class PlayList {
             archivo.writeUTF(cancionNueva.getRutaImagen());
             archivo.writeDouble(cancionNueva.getDuracion());
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
     
@@ -52,7 +52,7 @@ public class PlayList {
         }catch(EOFException e){
             
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return lista;
     }
@@ -67,7 +67,7 @@ public class PlayList {
             archivo.writeUTF(cancionNueva.getRutaImagen());
             archivo.writeDouble(cancionNueva.getDuracion());
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
     
@@ -75,7 +75,7 @@ public class PlayList {
         try{
             archivo.setLength(0);
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }
