@@ -105,7 +105,7 @@ private void agregarCancion(){
     
     private void eliminarCancion(){
         int indice=lista.getSelectedIndex();
-        if(indice!=1){
+        if(indice!=-1){
             canciones.remove(indice);
             modelo.remove(indice);
             archivo.borrarTodo();

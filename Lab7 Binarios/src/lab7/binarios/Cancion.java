@@ -12,6 +12,7 @@ public class Cancion{
         this.genero=genero;
         this.rutaCancion=rutaCancion;
         this.duracion=duracion;
+        this.rutaImagen=rutaImagen;
     }
 
     public String getNombre() {

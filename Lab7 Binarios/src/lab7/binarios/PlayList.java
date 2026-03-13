@@ -57,20 +57,6 @@ public class PlayList {
         return lista;
     }
     
-    public void agregarCancion(Cancion cancionNueva){
-        try{
-            archivo.seek(archivo.length());
-            archivo.writeUTF(cancionNueva.getNombre());
-            archivo.writeUTF(cancionNueva.getArtista());
-            archivo.writeUTF(cancionNueva.getGenero());
-            archivo.writeUTF(cancionNueva.getRutaCancion());
-            archivo.writeUTF(cancionNueva.getRutaImagen());
-            archivo.writeDouble(cancionNueva.getDuracion());
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-    
     public void borrarTodo(){
         try{
             archivo.setLength(0);
