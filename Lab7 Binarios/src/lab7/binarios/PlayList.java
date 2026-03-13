@@ -15,7 +15,7 @@ public class PlayList {
         try{
             archivo=new RandomAccessFile("playlista.dat","rw");
         }catch(IOException e){
-           JOptionPane.showMessageDialog(null, "A ocurrido un error inesperado");
+           JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
         }
     }
     
@@ -29,7 +29,7 @@ public class PlayList {
             archivo.writeUTF(cancionNueva.getRutaImagen());
             archivo.writeDouble(cancionNueva.getDuracion());
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "A ocurrido un error inesperado");
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
         }
     }
     
@@ -52,9 +52,30 @@ public class PlayList {
         }catch(EOFException e){
             
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null, "A ocurrido un error inesperado");
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
         }
         return lista;
     }
     
+    public void agregarCancion(Cancion cancionNueva){
+        try{
+            archivo.seek(archivo.length());
+            archivo.writeUTF(cancionNueva.getNombre());
+            archivo.writeUTF(cancionNueva.getArtista());
+            archivo.writeUTF(cancionNueva.getGenero());
+            archivo.writeUTF(cancionNueva.getRutaCancion());
+            archivo.writeUTF(cancionNueva.getRutaImagen());
+            archivo.writeDouble(cancionNueva.getDuracion());
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+        }
+    }
+    
+    public void borrarTodo(){
+        try{
+            archivo.setLength(0);
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado");
+        }
+    }
 }
