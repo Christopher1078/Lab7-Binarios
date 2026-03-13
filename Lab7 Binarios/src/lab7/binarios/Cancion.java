@@ -1,8 +1,7 @@
 
 package lab7.binarios;
-import java.io.Serializable;
 
-public class Cancion implements Serializable {
+public class Cancion{
     
     private String nombre, artista, genero, rutaCancion, rutaImagen;
     private double duracion;
